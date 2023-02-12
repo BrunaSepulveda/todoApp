@@ -4,6 +4,7 @@
  */
 package util;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -26,25 +27,61 @@ public class TaskTableModel extends AbstractTableModel {
     public int getColumnCount() {
         return columns.length;
     }
+    
+    @Override
+      public String getColumnName(int columnIndex) {
+         return columns[columnIndex]; 
+    }
+    
+    @Override
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        return columnIndex == 3;
+    }
+    
+    @Override
+    public Class<?> getColumnClass(int columnIndex) {
+        if(tasks.isEmpty()){
+            return Object.class;
+        }
+        // retornar a classe do dato da coluna
+        return this.getValueAt(0, columnIndex).getClass();
+    }
+    
+    @Override
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+        tasks.get(rowIndex).setCompleted((boolean)aValue);
+    }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex) {
-            case 1:
+            case 0:
                 return tasks.get(rowIndex).getName();
-            case 2:
+            case 1:
                 return tasks.get(rowIndex).getDescription();
+            case 2:
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                return dateFormat.format(tasks.get(rowIndex).getDeadline());
             case 3:
-                return tasks.get(rowIndex).getDeadline();
-            case 4:
                 return tasks.get(rowIndex).isCompleted();
-            case 5:
+            case 4:
                 return "";
-            case 6:
+            case 5:
                 return "";
             default:
                 return "Dados não encontrados";
         }
     }
-    
+
+    public String[] getColumns() {
+        return columns;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
 }

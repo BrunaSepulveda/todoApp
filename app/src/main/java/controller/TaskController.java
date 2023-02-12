@@ -45,7 +45,7 @@ public class TaskController {
     }
     
     public void update(Task task){
-        String sql = "UPDATE task SET"
+        String sql = "UPDATE task SET "
                 + "projectId = ?,"
                 + "name = ?,"
                 + "description = ?,"
@@ -107,6 +107,7 @@ public class TaskController {
             resultSet = statement.executeQuery();
             while(resultSet.next()){
                 Task task = new Task();
+                task.setIdProject(idProject);
                 task.setId(resultSet.getInt("id"));
                 task.setName(resultSet.getString("name"));
                 task.setDescription(resultSet.getString("description"));

@@ -12,7 +12,7 @@ import java.util.Date;
  */
 public class Task {
     private int id;
-    private int idProject;
+    private int projectId;
     private String name;
     private String notes;
     private String description;
@@ -23,7 +23,7 @@ public class Task {
 
     public Task(int id, int idProject, String name, String notes, String description, boolean completed, Date deadline, Date created_at, Date updated_at) {
         this.id = id;
-        this.idProject = idProject;
+        this.projectId = idProject;
         this.name = name;
         this.notes = notes;
         this.description = description;
@@ -46,11 +46,11 @@ public class Task {
     }
 
     public int getIdProject() {
-        return idProject;
+        return projectId;
     }
 
     public void setIdProject(int idProject) {
-        this.idProject = idProject;
+        this.projectId = idProject;
     }
 
     public String getName() {
@@ -111,7 +111,7 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task{" + "id=" + id + ", idProject=" + idProject + ", name=" + name + ", notes=" + notes + ", description=" + description + ", completed=" + completed + ", deadline=" + deadline + ", created_at=" + created_at + ", updated_at=" + updated_at + '}';
+        return "Task{" + "id=" + id + ", idProject=" + projectId + ", name=" + name + ", notes=" + notes + ", description=" + description + ", completed=" + completed + ", deadline=" + deadline + ", created_at=" + created_at + ", updated_at=" + updated_at + '}';
     }
     
 }
