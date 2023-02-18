@@ -174,7 +174,7 @@ public class TaskDialogScreen extends javax.swing.JDialog {
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         try {
             Task task = new Task();
-            task.setIdProject(15);
+            task.setIdProject(project.getId());
             task.setName(jTextFieldNameTask.getText());
             task.setDescription(jTextAreaDescTask.getText());
             task.setCompleted(false);
